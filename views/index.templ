@@ -1,0 +1,13 @@
+package views
+
+templ Index(rfc string) {
+	<div class="loader" id="loader"></div>
+	<div class="container">
+		<input type="hidden" id="rfc" value={ rfc }/>
+		<input type="hidden" placeholder="RFC" id="searchInput"/>
+		<button type="button" style="display:none" id="searchButton">Buscar</button>
+		<div id="responseBody" class="min-h-screen flex justify-center items-start bg-gray-100 py-10"></div>
+		<script src="static/lib/marked.min.js"></script>
+		<script src="static/index/index.js"></script>
+	</div>
+}

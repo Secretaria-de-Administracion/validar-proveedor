@@ -1,0 +1,39 @@
+package views
+
+import "github.com/periface/checador/internals/models"
+
+templ Buscar(registros models.BuscarResponse) {
+	if len(registros.InformacionDelProveedor) == 0 {
+		<div class="bg-white rounded-xl shadow-md p-8 text-center w-full max-w-md">
+			<p class="text-gray-600">Proveedor no encontrado/registrado</p>
+		</div>
+	} else {
+		<div class="w-full max-w-3xl space-y-6 px-4">
+			for _, valor := range registros.InformacionDelProveedor {
+				<div class="bg-white rounded-xl shadow-md p-6">
+					<div class="flex justify-end mb-2">
+						<span class="inline-flex items-center gap-1 text-sm font-medium text-green-600">
+							<!-- Check icon -->
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-4 w-4 fill-current">
+								<path
+									fill-rule="evenodd"
+									d="M16.707 5.293a1 1 0 0 1 0 1.414l-8.364 8.364a1 1 0 0 1-1.414 0L3.293 11.414a1 1 0 1 1 1.414-1.414l3.232 3.232 7.657-7.657a1 1 0 0 1 1.414 0Z"
+									clip-rule="evenodd"
+								></path>
+							</svg>
+							Verificado
+						</span>
+					</div>
+					<ul class="divide-y divide-gray-200">
+						for key, value := range valor {
+							<li class="flex justify-between py-2">
+								<span class="font-medium text-gray-600 capitalize">{ key }</span>
+								<span class="text-gray-900 truncate">{ value }</span>
+							</li>
+						}
+					</ul>
+				</div>
+			}
+		</div>
+	}
+}
